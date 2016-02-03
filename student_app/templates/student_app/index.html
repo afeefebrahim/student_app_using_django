@@ -1,0 +1,43 @@
+<!--<!DOCTYPE html>
+<html>
+    <head>
+        <title>student_app</title>
+    </head>
+    <body>-->
+        {% extends "student_app/base.html" %}
+        {% block title %}Welcome to studentapp!{% endblock %}
+        {% block body_block %}
+        <div class="hero-unit">
+        <h1>student details table</h1>
+        <br></br>
+        {% if categories %}
+            <ul><table  border = 1>
+                <tr><th width = 150>name</th> <th width = 150>sex</th> <th width = 150>age</th> <th width = 150>mark</th>
+                {% if user.is_authenticated %}
+                   <th width = 150>option</th>
+                 {% endif %} 
+                 </tr> 
+                {% for category in categories %}
+                <tr>
+                <td >{{ category.name }}</td> <td > {{  category.sex }} </td><td>   {{  category.age }} </td><td>  {{  category.mark }}</td>
+                {% if user.is_authenticated %}
+                        <td><a href='/student_app/delete_new/{{category.id}}/'> Delete</a></td>
+                        {% endif %}
+            </tr>
+                {% endfor %}
+            </table>
+            </ul>
+        {% else %}
+            <strong>There are no categories present.</strong>
+        {% endif %}
+        {% endblock %}
+    </div>
+    <!--    {% if user.is_authenticated %}
+        <a href="/student_app/add_details/">Add a New student details</a><br />
+        <a href="/student_app/logout/">Logout</a><br />
+        {%else%}
+        <a href="/student_app/register/">Register Here</a><br />
+        <a href="/student_app/login/">Login</a><br />
+        {%endif%}
+    </body>
+</html>-->
